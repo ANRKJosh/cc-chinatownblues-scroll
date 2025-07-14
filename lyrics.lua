@@ -1,14 +1,14 @@
 --[[
   Chinatown Blues - Lyric Scroller (for Advanced Monitors)
   By Vended
-
+ 
   This program displays the lyrics to the song "Chinatown Blues"
   on an attached advanced monitor with a scrolling effect. The timing
   of each line is approximated to match the song's rhythm.
-
+ 
   This version features larger text and splits long lines to fit
   better on monitors.
-
+ 
   Instructions:
   1. Place an Advanced Monitor next to the ComputerCraft computer.
   2. Save this code as a new program on the computer (e.g., "lyrics").
@@ -31,64 +31,65 @@ end
 monitor.setTextScale(1.5)
 
 -- Table of lyrics with their display timings.
--- Long lines have been split into two parts with adjusted delays.
+-- Delays have been adjusted to match the video timings.
+-- Note: Timings are calculated based on the start of each line group.
 local lyrics = {
-  { text = "Headlights, your Mustang witnessed", delay = 2.25 },
-  { text = "as we're eye to eye", delay = 2.25 },
-  { text = "Tell me why, your lack of intuition", delay = 2.5 },
-  { text = "burns me white", delay = 2.5 },
-  { text = "Only you can make me burn just like the sun", delay = 4.0 },
-  { text = "Only you can piece me back to one", delay = 4.5 },
+  { text = "Headlights, your Mustang witnessed", delay = 3.5 },
+  { text = "as we're eye to eye", delay = 3.5 },
+  { text = "Tell me why, your lack of intuition", delay = 3.5 },
+  { text = "burns me white", delay = 3.5 },
+  { text = "Only you can make me burn just like the sun", delay = 8.0 },
+  { text = "Only you can piece me back to one", delay = 8.0 },
   { text = "", delay = 1.0 },
   { text = "No matter what you do, I'll stay", delay = 3.0 },
   { text = "This isn't up to you today", delay = 3.0 },
   { text = "It hasn't always been this way", delay = 3.0 },
-  { text = "I've got a lot to prove today", delay = 3.5 },
+  { text = "I've got a lot to prove today", delay = 3.0 },
   { text = "", delay = 1.0 },
   { text = "Oh I'll never go", delay = 1.5 },
-  { text = "I'll stay", delay = 2.0 },
+  { text = "I'll stay", delay = 1.5 },
   { text = "I wanna hold you close", delay = 1.5 },
-  { text = "Today", delay = 2.0 },
+  { text = "Today", delay = 1.5 },
   { text = "I won't let you go", delay = 1.5 },
-  { text = "This way", delay = 2.0 },
+  { text = "This way", delay = 1.5 },
   { text = "Come on, let's give 'em a show", delay = 1.5 },
-  { text = "Today", delay = 3.0 },
+  { text = "Today", delay = 1.5 },
   { text = "", delay = 2.0 },
-  { text = "Roll the dice", delay = 2.5 },
-  { text = "Let's see how far you'll push", delay = 2.0 },
-  { text = "my nerves this time", delay = 2.0 },
-  { text = "Heavy sigh I always lose", delay = 2.5 },
-  { text = "when you apologize", delay = 2.5 },
-  { text = "Only you can make me burn just like the sun", delay = 4.0 },
+  { text = "Roll the dice", delay = 3.0 },
+  { text = "Let's see how far you'll push", delay = 3.0 },
+  { text = "my nerves this time", delay = 3.0 },
+  { text = "Heavy sigh I always lose", delay = 4.0 },
+  { text = "when you apologize", delay = 4.0 },
+  { text = "Only you can make me burn just like the sun", delay = 4.5 },
   { text = "Only you can fix me when I'm undone", delay = 4.5 },
   { text = "", delay = 1.0 },
   { text = "No matter what you do, I'll stay", delay = 3.0 },
   { text = "This isn't up to you today", delay = 3.0 },
   { text = "It hasn't always been this way", delay = 3.0 },
-  { text = "I've got a lot to prove today", delay = 3.5 },
+  { text = "I've got a lot to prove today", delay = 3.0 },
   { text = "", delay = 1.0 },
   { text = "I'll stay", delay = 2.0 },
   { text = "Today", delay = 2.0 },
   { text = "This way", delay = 2.0 },
   { text = "Today", delay = 3.0 },
   { text = "", delay = 1.0 },
-  { text = "Even if you let me go...", delay = 2.5 },
-  { text = "I'll stay", delay = 2.5 },
-  { text = "I want hold you close...", delay = 2.5 },
-  { text = "Today", delay = 2.5 },
-  { text = "I want to keep feeling...", delay = 2.5 },
-  { text = "This way", delay = 2.5 },
-  { text = "I want to keep loving,", delay = 1.25 },
-  { text = "and loving...", delay = 1.25 },
+  { text = "Even if you let me go...", delay = 2.2 },
+  { text = "I'll stay", delay = 2.2 },
+  { text = "I want hold you close...", delay = 2.2 },
+  { text = "Today", delay = 2.2 },
+  { text = "I want to keep feeling...", delay = 2.2 },
+  { text = "This way", delay = 2.2 },
+  { text = "I want to keep loving,", delay = 1.1 },
+  { text = "and loving...", delay = 1.1 },
   { text = "Today", delay = 4.0 },
   { text = "", delay = 1.0 },
-  { text = "No matter what you do, I'll stay", delay = 3.0 },
-  { text = "This isn't up to you today", delay = 3.0 },
-  { text = "It hasn't always been this way", delay = 3.0 },
-  { text = "I've got a lot to prove today", delay = 4.0 },
+  { text = "No matter what you do, I'll stay", delay = 2.75 },
+  { text = "This isn't up to you today", delay = 2.75 },
+  { text = "It hasn't always been this way", delay = 2.75 },
+  { text = "I've got a lot to prove today", delay = 2.75 },
   { text = "", delay = 2.0 },
-  { text = "Headlights, your Mustang witnessed", delay = 2.5 },
-  { text = "me embrace you tight", delay = 2.5 },
+  { text = "Headlights, your Mustang witnessed", delay = 3.0 },
+  { text = "me embrace you tight", delay = 3.0 },
   { text = "Hazy eyes, I think I'll pass out", delay = 3.0 },
   { text = "in your arms tonight", delay = 3.0 },
 }
