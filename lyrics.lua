@@ -6,6 +6,9 @@
   on an attached advanced monitor with a scrolling effect. The timing
   of each line is approximated to match the song's rhythm.
 
+  This version features larger text and splits long lines to fit
+  better on monitors.
+
   Instructions:
   1. Place an Advanced Monitor next to the ComputerCraft computer.
   2. Save this code as a new program on the computer (e.g., "lyrics").
@@ -23,16 +26,17 @@ if not monitor then
   return
 end
 
--- Configuration
-local SCROLL_DELAY = 0.5 -- Time in seconds between each scroll step.
+-- Set the text scale to make it larger. Default is 1.
+-- You can change this value (e.g., to 2 for even larger text).
+monitor.setTextScale(1.5)
 
 -- Table of lyrics with their display timings.
--- Each entry is a table with two values:
--- 1. The lyric text (string).
--- 2. The delay in seconds before the next line appears (number).
+-- Long lines have been split into two parts with adjusted delays.
 local lyrics = {
-  { text = "Headlights, your Mustang witnessed as we're eye to eye", delay = 4.5 },
-  { text = "Tell me why, your lack of intuition burns me white", delay = 5.0 },
+  { text = "Headlights, your Mustang witnessed", delay = 2.25 },
+  { text = "as we're eye to eye", delay = 2.25 },
+  { text = "Tell me why, your lack of intuition", delay = 2.5 },
+  { text = "burns me white", delay = 2.5 },
   { text = "Only you can make me burn just like the sun", delay = 4.0 },
   { text = "Only you can piece me back to one", delay = 4.5 },
   { text = "", delay = 1.0 },
@@ -51,8 +55,10 @@ local lyrics = {
   { text = "Today", delay = 3.0 },
   { text = "", delay = 2.0 },
   { text = "Roll the dice", delay = 2.5 },
-  { text = "Let's see how far you'll push my nerves this time", delay = 4.0 },
-  { text = "Heavy sigh I always lose when you apologize", delay = 5.0 },
+  { text = "Let's see how far you'll push", delay = 2.0 },
+  { text = "my nerves this time", delay = 2.0 },
+  { text = "Heavy sigh I always lose", delay = 2.5 },
+  { text = "when you apologize", delay = 2.5 },
   { text = "Only you can make me burn just like the sun", delay = 4.0 },
   { text = "Only you can fix me when I'm undone", delay = 4.5 },
   { text = "", delay = 1.0 },
@@ -72,7 +78,8 @@ local lyrics = {
   { text = "Today", delay = 2.5 },
   { text = "I want to keep feeling...", delay = 2.5 },
   { text = "This way", delay = 2.5 },
-  { text = "I want to keep loving, and loving...", delay = 2.5 },
+  { text = "I want to keep loving,", delay = 1.25 },
+  { text = "and loving...", delay = 1.25 },
   { text = "Today", delay = 4.0 },
   { text = "", delay = 1.0 },
   { text = "No matter what you do, I'll stay", delay = 3.0 },
@@ -80,8 +87,10 @@ local lyrics = {
   { text = "It hasn't always been this way", delay = 3.0 },
   { text = "I've got a lot to prove today", delay = 4.0 },
   { text = "", delay = 2.0 },
-  { text = "Headlights, your Mustang witnessed me embrace you tight", delay = 5.0 },
-  { text = "Hazy eyes, I think I'll pass out in your arms tonight", delay = 6.0 },
+  { text = "Headlights, your Mustang witnessed", delay = 2.5 },
+  { text = "me embrace you tight", delay = 2.5 },
+  { text = "Hazy eyes, I think I'll pass out", delay = 3.0 },
+  { text = "in your arms tonight", delay = 3.0 },
 }
 
 -- Function to clear the monitor screen and set the cursor to the top
