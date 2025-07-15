@@ -28,18 +28,18 @@ end
 
 -- Set the text scale to make it larger. Default is 1.
 -- You can change this value (e.g., to 2 for even larger text).
-monitor.setTextScale(1.5)
+monitor.setTextScale(2)
 
 -- Table of lyrics with their display timings.
 -- Delays have been adjusted to match the video timings.
 -- Note: Timings are calculated based on the start of each line group.
 local lyrics = {
   { text = "Headlights, your Mustang witnessed", delay = 3.3 },
-  { text = "as we're eye to eye", delay = 3.4 },
+  { text = "as we're eye to eye", delay = 3.5 },
   { text = "Tell me why, your lack of intuition", delay = 3.4 },
-  { text = "burns me white", delay = 3.2 },
-  { text = "Only you can make me burn just like the sun", delay = 7.0 },
-  { text = "Only you can piece me back to one", delay = 6.5 },
+  { text = "burns me white", delay = 3.3 },
+  { text = "Only you can make me burn just like the sun", delay = 7.1 },
+  { text = "Only you can piece me back to one", delay = 6.7 },
   { text = "", delay = 1.0 },
   { text = "No matter what you do, I'll stay", delay = 3.2 },
   { text = "This isn't up to you today", delay = 3.0 },
